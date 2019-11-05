@@ -1,0 +1,41 @@
+
+             _                   _
+   ___ _   _| |__  ___ _   _ ___| |_ ___ _ __ ___
+  / __| | | | '_ \/ __| | | / __| __/ _ \ '_ ` _ \
+  \__ \ |_| | |_) \__ \ |_| \__ \ ||  __/ | | | | |
+  |___/\__,_|_.__/|___/\__, |___/\__\___|_| |_| |_|
+                       |___/
+    Programmbeispiel            "Windows Environment Subsystem
+                                                 on Linux"
+
+Beschreibung
+------------
+
+Dieser Programmrahmen vollzieht das Konzept "Windows Environment Subsystem"
+unter Linux nach, und stellt eine einfache Implementierung der Subsystem
+Funktionalität dar.
+
+Der Code ist in drei Teile geteilt:
+
+subsystem.c implementiert den Subsystem Process, der den Zustand des Subsystems
+hält, und der als Server für ankommende Anfragen über Inter-Prozess
+Kommunikation fungiert.
+
+libsubsystem.c implementiert die Subsystem Bibliothek, die die
+Programmier-Schnittstelle zum Subsystem darstellt, und die Semantik bestehender
+Funktionen modifiziert, und eigene Funktionen hinzufügt.
+
+cat.c implementiert ein kleines Beispielprogramm.
+
+Wenn Sie den Code unter Verwendung des Makefiles erfolgreich gebaut haben, dann
+starten Sie den Subsystem Prozess durch einen Aufruf von `make start`. Danach
+können Sie das cat tool benutzen, um Dateien anzuzeigen, deren Dateipfad der
+Windows Semantik ähnlich ist, da ein Laufwerksbuchstabe vorangestellt ist.
+
+Der Subsystem Prozess hat dabei codiert, dass der Laufwerksbuchstabe C: auf das
+Wurzelverzeichnis `|' verweist, während der Laufwerksbuchstabe D: auf das
+Heiatverzeichnis des Subsystem Prozesses verweist.
+
+eine Beispielanwendung des cat tools könnte wiefolgt aussehen:
+
+  $ ./cat C:/etc/hostname
