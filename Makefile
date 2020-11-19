@@ -16,10 +16,10 @@ subsystem: $(subsystem_SRC)
 	$(CC) -o $@ $^
 
 libsubsystem.so: $(libsubsystem_SRC)
-	$(CC) -shared -ldl -o $@ -fPIC $^
+	$(CC) -shared -o $@ -fPIC $^ -ldl
 
 cat: $(cat_SRC)
-	$(CC) -o $@ -L. -I. -lsubsystem -Wl,-R -Wl,. $^
+	$(CC) -o $@ -L. -I. -Wl,-R -Wl,. $^ -lsubsystem -ldl
 
 # provide targets to start / stop the subsystem process
 start:

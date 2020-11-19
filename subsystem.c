@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <string.h>
 
 /* translate_path - translate the given path and interpret the windows path
  * semantics. Volumes are for simplicity hardcoded to:

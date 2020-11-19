@@ -9,6 +9,7 @@
 #include <limits.h>
 #include <sys/socket.h>
 #include <sys/un.h>
+#include <string.h>
 
 /* translate_path - this is a socket client that sends a path to a unx socket
  * and receives (and returns) a translated one.
