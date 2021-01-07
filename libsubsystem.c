@@ -1,6 +1,7 @@
 
 #include "subsystem.h"
 
+#define _GNU_SOURCE 1 // needed on linux for RTLD_NEXT in dlfcn.h
 #include <dlfcn.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
@@ -56,9 +57,9 @@ translate_path (const char *pathname)
 int
 open (const char *pathname, int flags)
 {
-  // we need glibc open to open the file. this is one way to get it.
-  void *handle = dlopen("libc.so.6", RTLD_LAZY);
-  int(*f)(const char*, int) = dlsym(handle, "open");
+  int(*f)(const char*, int) = dlsym(RTLD_NEXT, "open");
+  if (f == NULL)
+    return -1;
 
   // translat the path
   const char *translated = translate_path(pathname);
