@@ -34,7 +34,7 @@ Windows Semantik ähnlich ist, da ein Laufwerksbuchstabe vorangestellt ist.
 
 Der Subsystem Prozess hat dabei codiert, dass der Laufwerksbuchstabe C: auf das
 Wurzelverzeichnis `|' verweist, während der Laufwerksbuchstabe D: auf das
-Heiatverzeichnis des Subsystem Prozesses verweist.
+Heimatverzeichnis des Subsystem Prozesses (Umgebungsvariable $HOME) verweist.
 
 eine Beispielanwendung des cat tools könnte wiefolgt aussehen:
 

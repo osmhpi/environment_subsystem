@@ -29,7 +29,7 @@ translate_path (const char *pathname)
   struct sockaddr_un remote;
   remote.sun_family = AF_UNIX;
   strcpy(remote.sun_path, SUBSYSTEM_SOCKET_PATH);
-  size_t len = strlen(SUBSYSTEM_SOCKET_PATH) + sizeof(remote.sun_family);
+  size_t len = sizeof(remote);
 
   if (connect(s, (struct sockaddr*)&remote, len) == -1)
     return NULL;
